@@ -513,6 +513,10 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
             labels[:, [2, 4]] /= img.shape[0]  # height
             labels[:, [1, 3]] /= img.shape[1]  # width
 
+        # rotate90, 180, 270
+        # translate
+        # crop
+        # brightness, contrast
         if self.augment:
             # random left-right flip
             lr_flip = True
@@ -522,7 +526,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
                     labels[:, 1] = 1 - labels[:, 1]
 
             # random up-down flip
-            ud_flip = False
+            ud_flip = True
             if ud_flip and random.random() < 0.5:
                 img = np.flipud(img)
                 if nL:
